@@ -11,7 +11,9 @@ public class LoadGameManager : MonoBehaviour
     [SerializeField] MovementController player;
     //private List<EnemyController> enemies;
     string activeScene;
-    
+
+    //Playerprefs is like a dictionary<string, object>
+    //Player Prefs Addon for Unity recommeded
 
     //The scene manager can only save the scene that you are in you will need to "manually" save other data 
     public void Save(){
@@ -22,9 +24,11 @@ public class LoadGameManager : MonoBehaviour
     }
 
     public void NewGame(){
-        SaveGameState.newGame = true;
+        SaveGameState.newGame = true; //Public Bool specifies whether to load data
         Debug.Log("Loading New Game...");
         SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
+        //Single (Removes Everything Else), Additively (Adds on top of current Scene)
+        //String load scene by name, Int load scene by number from buildsettings
     }
 
     public void LoadGame(){
@@ -34,7 +38,7 @@ public class LoadGameManager : MonoBehaviour
             SceneManager.LoadScene(levelName); 
         }
         //Player data is "Manually" loaded on Start()
-        Time.timeScale = 1;
+        Time.timeScale = 1; //timeScale controls time based functionality like FixedUpdate and Time.deltaTime;
     }
 
     public void Exit(){

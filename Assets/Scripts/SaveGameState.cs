@@ -9,11 +9,12 @@ public static class SaveGameState{
     
     public static bool newGame;
 
-    public static void SavePlayer(MovementController player){
+    public static void SavePlayer(MovementController player){ //Save data to a file 
         BinaryFormatter formatter = new BinaryFormatter();
 
-        string path = Application.persistentDataPath + "/player.data";
-        FileStream stream = new FileStream(path, FileMode.Create);
+        string path = Application.persistentDataPath + "/player.data"; //make a file path (You could set a specific file name using a UI TextInput then saved it to a dictionary in playerPrefs)
+        FileStream stream = new FileStream(path, FileMode.Create); 
+        //FileMode.Create, FileMode.Append, FileMode.Open
 
         PlayerData data = new PlayerData(player);
 
@@ -21,14 +22,14 @@ public static class SaveGameState{
         stream.Close();
     }
 
-    public static PlayerData LoadPlayer(){
-        string path = Application.persistentDataPath + "/player.data";
+    public static PlayerData LoadPlayer(){ //Unpacks the file 
+        string path = Application.persistentDataPath + "/player.data"; //You could grab the file name from playerPrefs
 
         if(File.Exists(path)){
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
 
-            PlayerData data = formatter.Deserialize(stream) as PlayerData;
+            PlayerData data = formatter.Deserialize(stream) as PlayerData; 
             stream.Close();
 
             return data;

@@ -9,6 +9,8 @@ public class PlayerData
 {
     public int health;
     public float[] position;
+    //Cannot Save Unity Specific Data Types meaning no Vector3 but you can save individual variables that comprise the data types as such
+    //Vector3 = (float, float, float)
 
     public PlayerData(MovementController player){
         health = player.health;
