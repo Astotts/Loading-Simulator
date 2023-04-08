@@ -14,7 +14,14 @@ public class MovementController : MonoBehaviour
     [SerializeField] GameObject menuObject;
 
     private void Start(){
-        this.LoadPlayer();
+        Debug.Log(SaveGameState.newGame);
+        if(SaveGameState.newGame){
+            return;
+        }
+        else{
+            this.LoadPlayer();
+        }
+        
     }
 
     public void LoadPlayer(){

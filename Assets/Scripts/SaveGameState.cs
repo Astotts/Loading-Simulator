@@ -2,10 +2,13 @@ using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
+//Saving Game State Data (Saves actual game progress)
 //https://www.youtube.com/watch?v=XOjd_qU2Ido&ab_channel=Brackeys
 
 public static class SaveGameState{
     
+    public static bool newGame;
+
     public static void SavePlayer(MovementController player){
         BinaryFormatter formatter = new BinaryFormatter();
 

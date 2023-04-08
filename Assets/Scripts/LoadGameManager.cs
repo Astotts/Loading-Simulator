@@ -6,9 +6,6 @@ using UnityEngine.SceneManagement;
 //Saving and loading
 //https://www.youtube.com/watch?v=yTCphBjHo-Y&ab_channel=SpeedTutor
 
-//Singletons
-//https://www.youtube.com/watch?v=F6Y8q9H3UZI&ab_channel=SoloGameDev
-
 public class LoadGameManager : MonoBehaviour
 {
     [SerializeField] MovementController player;
@@ -25,11 +22,13 @@ public class LoadGameManager : MonoBehaviour
     }
 
     public void NewGame(){
-        Debug.Log("Loading New Game");
+        SaveGameState.newGame = true;
+        Debug.Log("Loading New Game...");
         SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
     }
 
     public void LoadGame(){
+        SaveGameState.newGame = false;
         if(PlayerPrefs.HasKey("LevelSaved")){
             string levelName = PlayerPrefs.GetString("LevelSaved");
             SceneManager.LoadScene(levelName); 
